@@ -1,0 +1,20 @@
+syntax = "proto3";
+package robotics;
+
+message FieldPosition {
+  float x = 1;
+  float y = 2;
+  bool inverted = 3;
+}
+
+message ArmPosition {
+  int32 base = 1;
+  int32 shoulder = 2;
+  bool error = 3;
+  string message = 4;
+}
+
+
+service PositionFinder {
+  rpc GetPosition(FieldPosition) returns (ArmPosition) {}
+}
